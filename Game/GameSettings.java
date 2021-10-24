@@ -1,9 +1,10 @@
 package Game;
-
-public GameSettings(String[] params) {
+import Board.*;
+public class GameSettings(String[] params) {
     String language="English";
     int rows=3; int columns=3; int numberOfPlayers=1; int numberOfBots=1;
     String playmode = "";
+    int gameMode = 0;
     if(params.length == 0) {
         while(!playmode.equals("!")) {
             System.out.println( "****************************************************************\n" +
@@ -27,10 +28,9 @@ public GameSettings(String[] params) {
             Scanner in = new Scanner(System.in);
             playmode = in.nextLine();
             if(playmode.equals("1") || playmode.equals("2")) {
-                scrabbleMode = playmode.equals("1")?false:true;
-                Square board[][] = new Square[rows][columns];
-                for(Square [] tiles: board) {Arrays.fill(tiles, new Square(scrabbleMode));}
-                gameSetup(numberOfPlayers, numberOfBots, board);           
+                gameMode = 1;  
+                Square b = new Square(true);
+                b.createBoard(gameMode, rows, columns);           
             } else if(playmode.equals("3") ||playmode.equals("4")) {
                 scrabbleMode=true;
                 //5x5 predefined scrabbleboard

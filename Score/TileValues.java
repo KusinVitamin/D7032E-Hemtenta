@@ -1,6 +1,6 @@
 package Score;
 
-public void TileValues() {
+public class TileValues() {
     this.englishScrabbleTiles = new HashMap<String, Integer>();
     //1-point letters
     englishScrabbleTiles.put("E", 1);
