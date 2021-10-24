@@ -1,6 +1,6 @@
 package Board;
 
-class Square {
+public class Square {
     //Square types
     public static final int RL = 1; //regular letter
     public static final int DL = 2; //double letter
@@ -16,6 +16,14 @@ class Square {
     public int letterValue = 0; //value depends on game-mode
     public boolean scrabbleValues = false;
     public HashMap<String, Integer> englishScrabbleTiles;
+
+    public void createBoard(int gameMode, int row, int col){
+        
+        Square board[][] = new Square[row][col];
+        for(Square [] tiles: board) {Arrays.fill(tiles, new Square(gameMode));}
+        gameSetup(numberOfPlayers, numberOfBots, board);
+
+    }
 
     public Square(boolean scrabbleValues) { //regular mode constructor
         this(scrabbleValues, RL);

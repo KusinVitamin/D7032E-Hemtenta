@@ -1,3 +1,5 @@
+package Game;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -5,7 +7,7 @@ import java.util.concurrent.*;
 import java.util.stream.*;
 
 
-class Player implements Comparable<Player>{
+public class Player implements Comparable<Player>{
     public int playerID;
     public boolean online;
     public boolean isBot;
@@ -14,10 +16,15 @@ class Player implements Comparable<Player>{
     public ObjectOutputStream outToClient;
     public ArrayList<Square[]> words;
     Scanner in = new Scanner(System.in);
-    Square[][] board;
+    public Square[][] board;
     public int score=0;
 
-            
+
+    public Square[][] getBoard() {
+        return this.board;
+        
+    }
+
     public Player(int playerID, Square[][] board, boolean isBot, Socket connection, ObjectInputStream inFromClient, ObjectOutputStream outToClient) {
         this.playerID = playerID;
         Square[][] newBoard = new Square[board.length][board[0].length]; //Make a new instance and copy - avoid writing to the same board

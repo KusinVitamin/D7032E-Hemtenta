@@ -8,8 +8,7 @@ public class VarietyWordSquares {
     HashMap<String, Integer> englishScrabbleTiles;
     public ServerSocket aSocket;
     public ArrayList<String> dictionary = new ArrayList<String>();
-    public ArrayList<Player> players = new ArrayList<Player>();
-    public boolean scrabbleMode;   
+    public ArrayList<Player> players = new ArrayList<Player>();   
     boolean test = false;
     String[][] test55 = new String[][] {{"I","a0"}, {"Q","a1"}, {"Q","a2"}, {"Q","a3"}, {"Q","a4"},
                                         {"C","b0"}, {"Q","b1"}, {"Q","b2"}, {"Q","b3"}, {"Q","b4"},

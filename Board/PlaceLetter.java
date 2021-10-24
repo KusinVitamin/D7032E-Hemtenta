@@ -1,7 +1,13 @@
 package Board;
+import java.util.Random;
+import Board.*;
+import Message.*;
+import Score.*;
+
+
 
 public class placeLetter(String letter) {
-    int value = (scrabbleMode?englishScrabbleTiles.get(letter):1);
+   // int value = (scrabbleMode?englishScrabbleTiles.get(letter):1);
     String theLetter = letter + (scrabbleMode?" [" + value + "]":"");
     int r, c =0;         
     if(!isBot) {
