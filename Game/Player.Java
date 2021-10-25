@@ -47,6 +47,8 @@ public class Player implements Comparable<Player>{
     }
             
 
-public static void main(String argv[]) {
-    VarietyWordSquares game = new VarietyWordSquares(argv);
+    public static void main(String argv[]) {
+        GameSettings game = new GameSettings();
+        game.menu (argv);
+    }
 }

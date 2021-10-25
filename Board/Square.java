@@ -1,5 +1,6 @@
 package Board;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import Game.*;
 public class Square {
@@ -18,6 +19,7 @@ public class Square {
     public int letterValue = 0; //value depends on game-mode
     public boolean scrabbleValues = false;
     public HashMap<String, Integer> englishScrabbleTiles;
+    Square[][] board;
 
     public void createBoard(int gameMode, int row, int col){
         
