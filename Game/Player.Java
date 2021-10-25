@@ -1,10 +1,10 @@
 package Game;
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.*;
+import Board.*;
 
 
 public class Player implements Comparable<Player>{
@@ -40,7 +40,11 @@ public class Player implements Comparable<Player>{
             this.online = true;
         this.connection = connection; this.inFromClient = inFromClient; this.outToClient = outToClient; this.isBot = isBot;        
     }
-
+    @Override
+    public int compareTo(Player o) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
             
 
 public static void main(String argv[]) {

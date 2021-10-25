@@ -34,21 +34,21 @@ public class GameSettings(String[] params) {
             } else if(playmode.equals("3") ||playmode.equals("4")) {
                 scrabbleMode=true;
                 //5x5 predefined scrabbleboard
-                int scrabbleBoard[][] = {{VarietyWordSquares.Square.DW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.TW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DW},
-                                         {VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.RL},
-                                         {VarietyWordSquares.Square.TL, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.TW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.TL},
-                                         {VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.RL},
-                                         {VarietyWordSquares.Square.DW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.TW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DW}};
+                int scrabbleBoard[][] = {{Square.DW, Square.RL, Square.TW, Square.RL, Square.DW},
+                                         {Square.RL, Square.DL, Square.RL, Square.DL, Square.RL},
+                                         {Square.TL, Square.RL, Square.TW, Square.RL, Square.TL},
+                                         {Square.RL, Square.DL, Square.RL, Square.DL, Square.RL},
+                                         {Square.DW, Square.RL, Square.TW, Square.RL, Square.DW}};
                 if(playmode.equals("4")) {
                     //5x5 random scrabbleboard (3 double letter, 2 tripple letter, 3 double word, 1 tripple word)
-                    for(int[] row: scrabbleBoard) {Arrays.fill(row, VarietyWordSquares.Square.RL);} //reset scrabbleBoard
+                    for(int[] row: scrabbleBoard) {Arrays.fill(row, Square.RL);} //reset scrabbleBoard
                     //Random place 3 DL, 2 TL, 3 DW, 1 TW
-                    int tileTypes [] = {VarietyWordSquares.Square.DL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.TL, VarietyWordSquares.Square.TL, VarietyWordSquares.Square.DW, VarietyWordSquares.Square.DW, VarietyWordSquares.Square.DW, VarietyWordSquares.Square.TW};
+                    int tileTypes [] = {Square.DL, Square.DL, Square.DL, Square.TL, Square.TL, Square.DW, Square.DW, Square.DW, Square.TW};
                     for(int tile : tileTypes) {
                         Random rnd = new Random();
                         int r, c;
                         do {r = rnd.nextInt(5); c = rnd.nextInt(5);
-                        } while(scrabbleBoard[r][c]!=VarietyWordSquares.Square.RL);
+                        } while(scrabbleBoard[r][c]!=Square.RL);
                         scrabbleBoard[r][c] = tile;
                     }
                 }

@@ -3,10 +3,11 @@ import java.util.Random;
 import Game.*;
 
 
+
  //Print the board
  public class PrintBoard {
-     Player p = new Player();
-     Player b = new Player();
+     Game.Player p = new Game.Player();
+     Game.Player b = new Game.Player();
 
     public String DisplayBoard(){
      Square[][] board = p.getBoard();
@@ -50,7 +51,7 @@ import Game.*;
        int r = row ;
        int c = col;        
         if(!isBot) {
-            sendMessage("Place " + theLetter + " (syntax [row column])");
+            sendMessage("Place " + letter + " (syntax [row column])");
             do {
                 String place = readMessage().toLowerCase();
                 String[] placement = (place.contains(" ")?place.split(" "):place.split("")); //got tired of writing spaces when picking a letter
