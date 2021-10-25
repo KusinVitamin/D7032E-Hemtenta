@@ -4,26 +4,32 @@ import java.io.FileReader;
 import java.util.Random;
 import Board.*;
 import Connection.*;
+import Dictionary.GetDictionary;
+import Game.*;
+import Score.*;
 
 public class GameSetup{
+    Random rnd = new Random();
+    int randomStarter = 0;
+    Player p = new Player(randomStarter, null, false, null, null, null);
     Server s = new Server();
     GameHandler g = new GameHandler();
+    GetDictionary d = new GetDictionary();
+    TileValues t = new TileValues();
+
+
 
     public void gameSetup(int numPlayers, int numBots, Square[][] board) {
+  
         try {
-            FileReader fileReader = new FileReader("CollinsScrabbleWords2019.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = null;
-            while((line = bufferedReader.readLine()) != null) {
-                dictionary.add(line);
-            }
-            initScrabbleValues();
-            bufferedReader.close();
+            d.dictionary("English");
+            t.setTiles();
             s.server(numPlayers, numBots, board);
             Random rnd = new Random();
-            int randomStarter = rnd.nextInt(players.size());
-            game(randomStarter);
-        } catch(Exception e) {
+            randomStarter = rnd.nextInt(p.players.size());
+            g.game(randomStarter);
+            
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

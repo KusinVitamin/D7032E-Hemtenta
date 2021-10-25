@@ -2,9 +2,13 @@ package Score;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Dictionary;
 
+import Dictionary.*;
 import Board.*;
 public class CheckWord{
+    GetDictionary d = new GetDictionary();
 
         public ArrayList<Square[]> checkWords(Square[][] board) {
             ArrayList<Square[]> words = new ArrayList();
@@ -16,7 +20,7 @@ public class CheckWord{
                     for(int i=col; i<columns.length; i++) {
                         possibleWord.add(columns[i]);
                         String aWord = Arrays.toString(possibleWord.toArray()).replace("[", "").replace("]", "").replace(", ", "");
-                        if(dictionary.contains(aWord)){
+                        if(d.dictionary.contains(aWord)){
                             words.add(possibleWord.toArray(new Square[possibleWord.size()]));
                         }
                     }
@@ -33,7 +37,7 @@ public class CheckWord{
                     for(int i=row; i<rows.length; i++) {
                         possibleWord.add(rows[i]);
                         String aWord = Arrays.toString(possibleWord.toArray()).replace("[", "").replace("]", "").replace(", ", "");
-                        if(dictionary.contains(aWord)){
+                        if(d.dictionary.contains(aWord)){
                             words.add(possibleWord.toArray(new Square[possibleWord.size()]));
                         }                                    
                     }
@@ -47,7 +51,7 @@ public class CheckWord{
                     while(r<board.length && c<board[0].length) {
                         possibleWord.add(board[r][c]);
                         String aWord = Arrays.toString(possibleWord.toArray()).replace("[", "").replace("]", "").replace(", ", "");
-                        if(dictionary.contains(aWord)) {
+                        if(d.dictionary.contains(aWord)) {
                             words.add(possibleWord.toArray(new Square[possibleWord.size()]));
                         }
                         r++; c++;

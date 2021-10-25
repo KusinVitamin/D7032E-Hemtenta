@@ -6,7 +6,7 @@ import Score.*;
 
 
 
-public class placeLetter(String letter) {
+public class PlaceLetter{
    // int value = (scrabbleMode?englishScrabbleTiles.get(letter):1);
     String theLetter = letter + (scrabbleMode?" [" + value + "]":"");
     int r, c =0;         

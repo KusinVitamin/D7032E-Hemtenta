@@ -7,10 +7,10 @@ import Connection.*;
 
 public class GameSettings {
     String language="English";
-    int rows=3; 
-    int columns=3; 
-    int numberOfPlayers=1; 
-    int numberOfBots=1;
+    public int rows=3; 
+    public int columns=3; 
+    public int numberOfPlayers=1; 
+    public int numberOfBots=1;
     String playmode = "";
     public int gameMode = 0;
     Square[][] Board;

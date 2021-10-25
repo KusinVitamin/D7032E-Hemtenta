@@ -20,12 +20,14 @@ public class Square {
     public boolean scrabbleValues = false;
     public HashMap<String, Integer> englishScrabbleTiles;
     Square[][] board;
+    GameSetup g = new GameSetup();
+    GameSettings gs = new GameSettings();
 
     public void createBoard(int gameMode, int row, int col){
         
         Square board[][] = new Square[row][col];
         for(Square [] tiles: board) {Arrays.fill(tiles, new Square(gameMode));}
-        gameSetup(numberOfPlayers, numberOfBots, board);
+        g.gameSetup(gs.numberOfPlayers, gs.numberOfBots, board);
 
     }
 
