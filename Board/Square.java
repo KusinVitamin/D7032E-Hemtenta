@@ -1,5 +1,7 @@
 package Board;
 
+import java.util.HashMap;
+import Game.*;
 public class Square {
     //Square types
     public static final int RL = 1; //regular letter

@@ -1,7 +1,13 @@
 package Score;
 
-public class TileValues() {
+import java.util.HashMap;
+
+public class TileValues {
+    HashMap<String, Integer> englishScrabbleTiles;
+
+    public void setTiles(){
     this.englishScrabbleTiles = new HashMap<String, Integer>();
+    
     //1-point letters
     englishScrabbleTiles.put("E", 1);
     englishScrabbleTiles.put("A", 1);
@@ -41,4 +47,6 @@ public class TileValues() {
     //10-point letters
     englishScrabbleTiles.put("Q", 10);
     englishScrabbleTiles.put("Z", 10);
+    }
 }
+

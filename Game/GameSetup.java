@@ -1,4 +1,10 @@
 package Game;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Random;
+import Board.*;
+public class GameSetup{
+
 
 public void gameSetup(int numPlayers, int numBots, Square[][] board) {
     try {
@@ -17,4 +23,5 @@ public void gameSetup(int numPlayers, int numBots, Square[][] board) {
     } catch(Exception e) {
         System.out.println(e.getMessage());
     }
+}
 }

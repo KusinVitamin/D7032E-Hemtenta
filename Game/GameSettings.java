@@ -1,11 +1,21 @@
 package Game;
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
 import Board.*;
-public class GameSettings(String[] params) {
+import Connection.*;
+
+public class GameSettings {
     String language="English";
     int rows=3; int columns=3; int numberOfPlayers=1; int numberOfBots=1;
     String playmode = "";
     int gameMode = 0;
-    if(params.length == 0) {
+    Square[][] Board;
+    Client c = new Client();
+
+    public void menu(String []params){
+
+        if(params.length == 0) {
         while(!playmode.equals("!")) {
             System.out.println( "****************************************************************\n" +
                                 " Welcome to VarietyBoggle\n" +
@@ -15,7 +25,7 @@ public class GameSettings(String[] params) {
                                 "    Language: "+ language + "\n" + 
                                 "    Number of players: " + numberOfPlayers + "\n"+
                                 "    Number of bots: " + numberOfBots + "\n"+
-                                "    Testing (remove for final release): " + test + "\n"+
+                                "    Testing (remove for final release): " + "test" + "\n"+
                                 "****************************************************************\n" +
                                 " Menu:\n" +
                                 "  [1] Play standard WordSquares\n" +
@@ -32,7 +42,7 @@ public class GameSettings(String[] params) {
                 Square b = new Square(true);
                 b.createBoard(gameMode, rows, columns);           
             } else if(playmode.equals("3") ||playmode.equals("4")) {
-                scrabbleMode=true;
+                gameMode = 2;
                 //5x5 predefined scrabbleboard
                 int scrabbleBoard[][] = {{Square.DW, Square.RL, Square.TW, Square.RL, Square.DW},
                                          {Square.RL, Square.DL, Square.RL, Square.DL, Square.RL},
@@ -59,7 +69,8 @@ public class GameSettings(String[] params) {
                         board[i][j] = new Square(true, scrabbleBoard[i][j]);
                     }    
                 }
-                gameSetup(numberOfPlayers, numberOfBots, board);                
+                GameSetup g = new GameSetup();
+                g.gameSetup(numberOfPlayers, numberOfBots, board);                
             }
             else if(playmode.equals("5")) {
                 //Settings
@@ -69,7 +80,7 @@ public class GameSettings(String[] params) {
                                    "  [2]  Language: "+ language + "\n" + 
                                    "  [3]  Number of players: " + numberOfPlayers + "\n"+
                                    "  [4]  Number of bots: " + numberOfBots + "\n"+
-                                   "  [5]  Testing (remove for final release): " + test + "\n"+
+                                   "  [5]  Testing (remove for final release): " + "test" + "\n"+
                                    "  [6]  Return to the main menu" + "\n" +
                                    "****************************************************************\n");
                 String setting = in.nextLine();
@@ -90,16 +101,18 @@ public class GameSettings(String[] params) {
                     numberOfBots = Integer.parseInt(option);
                 } else if(setting.equals("5")) {
                     System.out.println("Toggling testing");
-                    test = !test;
+                 /*    test = !test;
                     if(test) {
                         rows=5; columns=5;
-                    }
+                    } */
                 }
             }   
         }      
     } else {
         try {
-            client("127.0.0.1");            
+            
+            c.client("127.0.0.1");            
         } catch (Exception e){}
     }  
+}
 }
