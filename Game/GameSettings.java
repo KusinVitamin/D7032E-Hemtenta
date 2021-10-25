@@ -7,9 +7,12 @@ import Connection.*;
 
 public class GameSettings {
     String language="English";
-    int rows=3; int columns=3; int numberOfPlayers=1; int numberOfBots=1;
+    int rows=3; 
+    int columns=3; 
+    int numberOfPlayers=1; 
+    int numberOfBots=1;
     String playmode = "";
-    int gameMode = 0;
+    public int gameMode = 0;
     Square[][] Board;
     Client c = new Client();
 

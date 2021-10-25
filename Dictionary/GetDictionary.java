@@ -1,15 +1,20 @@
-package Game;
+package Dictionary;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Random;
-import Board.*;
-import Connection.*;
 
-public class GameSetup{
-    Server s = new Server();
-    GameHandler g = new GameHandler();
+import Score.*;
 
-    public void gameSetup(int numPlayers, int numBots, Square[][] board) {
+
+
+public class GetDictionary {
+    public ArrayList<String> dictionary = new ArrayList<String>();
+    TileValues t = new TileValues();
+
+
+    public void dictionary(String language){
         try {
             FileReader fileReader = new FileReader("CollinsScrabbleWords2019.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -17,14 +22,13 @@ public class GameSetup{
             while((line = bufferedReader.readLine()) != null) {
                 dictionary.add(line);
             }
-            initScrabbleValues();
+            t.setTiles();
             bufferedReader.close();
-            s.server(numPlayers, numBots, board);
-            Random rnd = new Random();
-            int randomStarter = rnd.nextInt(players.size());
-            game(randomStarter);
+
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
+
     }
+    
 }

@@ -18,6 +18,7 @@ public class Player implements Comparable<Player>{
     Scanner in = new Scanner(System.in);
     public Square[][] board;
     public int score=0;
+    public ArrayList<Player> players = new ArrayList<Player>();
 
 
     public Square[][] getBoard() {
