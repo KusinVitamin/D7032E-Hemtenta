@@ -1,8 +1,11 @@
 package GameModes;
 
+import Game.GameSetup;
+
 public abstract class GameModeFactory {
     private String name;
     private int id;
+    GameSetup g = new GameSetup();
 
     public String getName(){
         return name;
@@ -21,6 +24,8 @@ public abstract class GameModeFactory {
     }
 
     public void StartGame(){
+        
+
 
     }
     

@@ -48,5 +48,10 @@ public class TileValues {
     englishScrabbleTiles.put("Q", 10);
     englishScrabbleTiles.put("Z", 10);
     }
+
+    public int getDictValue(String letter){
+        return englishScrabbleTiles.get(letter);
+
+    }
 }
 
