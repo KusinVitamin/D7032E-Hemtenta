@@ -4,10 +4,12 @@ import Game.*;
 
 
 
+
  //Print the board
  public class PrintBoard {
-     Game.Player p = new Game.Player();
-     Game.Player b = new Game.Player();
+     Player p = new Player(0, null, false, null, null, null);
+     GameSettings gs = new GameSettings();
+     
 
     public String DisplayBoard(){
      Square[][] board = p.getBoard();
@@ -38,7 +40,7 @@ import Game.*;
          }
      }
      retStr += "\t";
-     if(scrabbleMode) {
+     if(gs.gameMode == 2) {
          retStr += Tiles.RESET + "\n\n\t" +Tiles.REGULAR + " STD \t" + Tiles.RESET+Tiles.DOUBLE_LETTER + " DL  \t" + Tiles.RESET+Tiles.TRIPPLE_LETTER + " TL  \t" + Tiles.RESET+Tiles.DOUBLE_WORD + " DW  \t" + RESET+TRIPPLE_WORD + " TW  \t" + RESET;
      }
      return retStr + Tiles.RESET + "\n";
@@ -50,7 +52,7 @@ import Game.*;
        // String theLetter = letter + (scrabbleMode?" [" + value + "]":""); 
        int r = row ;
        int c = col;        
-        if(!isBot) {
+        if(!p.isBot) {
             sendMessage("Place " + letter + " (syntax [row column])");
             do {
                 String place = readMessage().toLowerCase();
@@ -72,12 +74,12 @@ import Game.*;
 
 
     public String pickLetter() {
-        if(b.isBot) {
+        if(p.isBot) {
             Random rnd = new Random();
             int theLetter = rnd.nextInt(26);
             return ""+((char) (theLetter+65));
         }
-        sendMessage((scrabbleMode?Square.LETTER_VALUES+"\n":"") + "Pick a letter");
+        sendMessage((gs.gameMode==2?Square.LETTER_VALUES+"\n":"") + "Pick a letter");
         return readMessage();
         }
 
