@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.*;
 
-public class VarietyWordSquares {
+public class original {
     HashMap<String, Integer> englishScrabbleTiles;
     public ServerSocket aSocket;
     public ArrayList<String> dictionary = new ArrayList<String>();
@@ -322,10 +322,10 @@ public class VarietyWordSquares {
 
     
     public static void main(String argv[]) {
-        VarietyWordSquares game = new VarietyWordSquares(argv);
+        original game = new original(argv);
     }
     
-    public VarietyWordSquares(String[] params) {
+    public original(String[] params) {
         String language="English";
         int rows=3; int columns=3; int numberOfPlayers=1; int numberOfBots=1;
         String playmode = "";
@@ -359,21 +359,21 @@ public class VarietyWordSquares {
                 } else if(playmode.equals("3") ||playmode.equals("4")) {
                     scrabbleMode=true;
                     //5x5 predefined scrabbleboard
-                    int scrabbleBoard[][] = {{VarietyWordSquares.Square.DW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.TW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DW},
-                                             {VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.RL},
-                                             {VarietyWordSquares.Square.TL, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.TW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.TL},
-                                             {VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.RL},
-                                             {VarietyWordSquares.Square.DW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.TW, VarietyWordSquares.Square.RL, VarietyWordSquares.Square.DW}};
+                    int scrabbleBoard[][] = {{original.Square.DW, original.Square.RL, original.Square.TW, original.Square.RL, original.Square.DW},
+                                             {original.Square.RL, original.Square.DL, original.Square.RL, original.Square.DL, original.Square.RL},
+                                             {original.Square.TL, original.Square.RL, original.Square.TW, original.Square.RL, original.Square.TL},
+                                             {original.Square.RL, original.Square.DL, original.Square.RL, original.Square.DL, original.Square.RL},
+                                             {original.Square.DW, original.Square.RL, original.Square.TW, original.Square.RL, original.Square.DW}};
                     if(playmode.equals("4")) {
                         //5x5 random scrabbleboard (3 double letter, 2 tripple letter, 3 double word, 1 tripple word)
-                        for(int[] row: scrabbleBoard) {Arrays.fill(row, VarietyWordSquares.Square.RL);} //reset scrabbleBoard
+                        for(int[] row: scrabbleBoard) {Arrays.fill(row, original.Square.RL);} //reset scrabbleBoard
                         //Random place 3 DL, 2 TL, 3 DW, 1 TW
-                        int tileTypes [] = {VarietyWordSquares.Square.DL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.DL, VarietyWordSquares.Square.TL, VarietyWordSquares.Square.TL, VarietyWordSquares.Square.DW, VarietyWordSquares.Square.DW, VarietyWordSquares.Square.DW, VarietyWordSquares.Square.TW};
+                        int tileTypes [] = {original.Square.DL, original.Square.DL, original.Square.DL, original.Square.TL, original.Square.TL, original.Square.DW, original.Square.DW, original.Square.DW, original.Square.TW};
                         for(int tile : tileTypes) {
                             Random rnd = new Random();
                             int r, c;
                             do {r = rnd.nextInt(5); c = rnd.nextInt(5);
-                            } while(scrabbleBoard[r][c]!=VarietyWordSquares.Square.RL);
+                            } while(scrabbleBoard[r][c]!=original.Square.RL);
                             scrabbleBoard[r][c] = tile;
                         }
                     }
