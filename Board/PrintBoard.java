@@ -1,6 +1,8 @@
 package Board;
 import java.util.Random;
 import Game.*;
+import Message.*;
+
 
 
 
@@ -9,6 +11,8 @@ import Game.*;
  public class PrintBoard {
      Player p = new Player(0, null, false, null, null, null);
      GameSettings gs = new GameSettings();
+     Message m = new Message();
+     
      
 
     public String DisplayBoard(){
@@ -53,9 +57,9 @@ import Game.*;
        int r = row ;
        int c = col;        
         if(!p.isBot) {
-            sendMessage("Place " + letter + " (syntax [row column])");
+            m.sendMessage("Place " + letter + " (syntax [row column])");
             do {
-                String place = readMessage().toLowerCase();
+                String place = m.readMessage().toLowerCase();
                 String[] placement = (place.contains(" ")?place.split(" "):place.split("")); //got tired of writing spaces when picking a letter
                 r = ((int) placement[0].charAt(0))-97; //ascii code for a
                 c = Integer.parseInt(placement[1]);
@@ -79,8 +83,8 @@ import Game.*;
             int theLetter = rnd.nextInt(26);
             return ""+((char) (theLetter+65));
         }
-        sendMessage((gs.gameMode==2?Square.LETTER_VALUES+"\n":"") + "Pick a letter");
-        return readMessage();
+        m.sendMessage((gs.gameMode==2?Square.LETTER_VALUES+"\n":"") + "Pick a letter");
+        return m.readMessage();
         }
 
  }

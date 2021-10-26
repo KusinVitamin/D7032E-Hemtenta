@@ -15,7 +15,7 @@ public class Player implements Comparable<Player>{
     public ObjectInputStream inFromClient;
     public ObjectOutputStream outToClient;
     public ArrayList<Square[]> words;
-    Scanner in = new Scanner(System.in);
+    public Scanner in = new Scanner(System.in);
     public Square[][] board;
     public int score=0;
     public ArrayList<Player> players = new ArrayList<Player>();

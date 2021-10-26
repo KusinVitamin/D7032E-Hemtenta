@@ -25,8 +25,8 @@ public class Square {
 
     public void createBoard(int gameMode, int row, int col){
         
-        Square board[][] = new Square[row][col];
-        for(Square [] tiles: board) {Arrays.fill(tiles, new Square(gameMode));}
+        board = new Square[row][col];
+        for(Square [] tiles: board) {Arrays.fill(tiles, new Square(true));}
         g.gameSetup(gs.numberOfPlayers, gs.numberOfBots, board);
 
     }

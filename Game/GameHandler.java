@@ -9,6 +9,8 @@ import Score.*;
 public class GameHandler{
     Player p = new Player(0, null, false, null, null, null);
     Message m = new Message();
+    CalcScore cs = new CalcScore();
+    CheckWord cw = new CheckWord(); 
     
 
 
@@ -20,7 +22,7 @@ public class GameHandler{
                 String letter = test?test55[i][0]:currentPicker.pickLetter().toUpperCase(); //use predefined picks during test
 
                 ExecutorService threadpool = Executors.newFixedThreadPool(p.players.size());  
-                for(Player player : players) {
+                for(Player player : p.players) {
                     if(test) {player.placeLetter(letter, test55[i][1]);}
                     else {
                         //Make sure every player can place their letter at the same time
@@ -40,12 +42,12 @@ public class GameHandler{
                     Thread.sleep(100);
                 }
                 int nextPlayer = (currentPicker.playerID+1==p.players.size()?0:currentPicker.playerID+1);
-                currentPicker = players.get(nextPlayer);
+                currentPicker = p.players.get(nextPlayer);
             }
             p.players.forEach((player) -> player.sendMessage(player.toString() + "\n"));
-            p.players.forEach((player) -> player.words=checkWords(player.board));
-            p.players.forEach((player) -> player.score=calculateScore(player.words));
-            Collections.sort(players);
+            p.players.forEach((player) -> player.words=cw.checkWords(player.board));
+            p.players.forEach((player) -> player.score=cs.calculateScore(player.words));
+            Collections.sort(p.players);
             String winnerMsg = "Winner: PlayerID "+ p.players.get(0).playerID+ ", Scores:\n";
             for(Player player : p.players) {winnerMsg += "PlayerID " + player.playerID + " Score " + player.score + "\n";}
             for(Player player : p.players) {m.sendMessage(winnerMsg);}

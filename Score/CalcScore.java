@@ -42,18 +42,17 @@ public class CalcScore implements Comparable{
                 return score;
             }
 
-          
 
-            @Override
             public int compareTo(Player o) {
-                return o.score - this.score; //Reverse order: Highest score first
+                //Reverse order: Highest score first
+                return o.score - this.score;
             }
 
 
-
             @Override
-            public int compareTo(Player o) {
-                return o.score - this.score; //Reverse order: Highest score first
+            public int compareTo(Object o) {
+                // TODO fråga om det här
+                return 0;
             }        
             
 }    
