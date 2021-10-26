@@ -1,16 +1,19 @@
 package Game;
 
+import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import Board.*;
 import Message.*;
 import Score.*;
 
+
 public class GameHandler{
     Player p = new Player(0, null, false, null, null, null);
     Message m = new Message();
     CalcScore cs = new CalcScore();
-    CheckWord cw = new CheckWord(); 
+    CheckWord cw = new CheckWord();
+    PlaceLetter pl = new PlaceLetter(); 
     
 
 
@@ -19,21 +22,20 @@ public class GameHandler{
             int rounds = currentPicker.board.length * currentPicker.board[0].length;
             for(int i=0; i<rounds; i++) {
                 p.players.forEach((player) -> m.sendMessage(player.toString() + "\nWaiting for a letter to be picked...\n"));            
-                String letter = test?test55[i][0]:currentPicker.pickLetter().toUpperCase(); //use predefined picks during test
+                String letter = pl.pickLetter().toUpperCase();
 
                 ExecutorService threadpool = Executors.newFixedThreadPool(p.players.size());  
                 for(Player player : p.players) {
-                    if(test) {player.placeLetter(letter, test55[i][1]);}
-                    else {
+                    
                         //Make sure every player can place their letter at the same time
                         Runnable task = new Runnable() {
                             @Override
                             public void run() {
-                            player.placeLetter(letter);   
+                            pl.placeLetter(letter);   
                             }
                         };
                         threadpool.execute(task);
-                    }
+                    
                 }
                 threadpool.shutdown();
 
@@ -44,7 +46,7 @@ public class GameHandler{
                 int nextPlayer = (currentPicker.playerID+1==p.players.size()?0:currentPicker.playerID+1);
                 currentPicker = p.players.get(nextPlayer);
             }
-            p.players.forEach((player) -> player.sendMessage(player.toString() + "\n"));
+            p.players.forEach((player) -> m.sendMessage(player.toString() + "\n"));
             p.players.forEach((player) -> player.words=cw.checkWords(player.board));
             p.players.forEach((player) -> player.score=cs.calculateScore(player.words));
             Collections.sort(p.players);
