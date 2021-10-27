@@ -1,32 +1,27 @@
 package GameModes;
-
+import Board.*;
 import Game.GameSetup;
 
-public abstract class GameModeFactory {
-    private String name;
-    private int id;
-    GameSetup g = new GameSetup();
+public class GameModeFactory {
+    GameMode gm = new GameMode();
 
-    public String getName(){
-        return name;
-    }
-
-    public void setName(String newName){
-        name = newName;
-    }
-
-    public int GameMode(){
-        return id;
-    } 
-
-    public void setID(int newID){
-        id = newID;
-    }
-
-    public void StartGame(){
+    public void makeGameMode(int gameMode, int numPlayers, int numBots, Square[][] board, boolean random){
+        GameMode selection = null;
         
 
+        switch (gameMode) {
+            case 1:
+                
+                gm.Standard(numPlayers, numBots, board);
+             
+            case 2: 
 
+                Scrabble(numPlayers,numBots, board, random);
+            default:
+                break;
+        }
+        
     }
+
     
 }

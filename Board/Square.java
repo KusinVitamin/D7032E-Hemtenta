@@ -26,18 +26,18 @@ public class Square {
     public void createBoard(int gameMode, int row, int col){
         
         board = new Square[row][col];
-        for(Square [] tiles: board) {Arrays.fill(tiles, new Square(true));}
+        for(Square [] tiles: board) {Arrays.fill(tiles, board(null,null,null,1));}
         g.gameSetup(gs.numberOfPlayers, gs.numberOfBots, board);
 
     }
 
-    public Square(boolean scrabbleValues) { //regular mode constructor
+/*     public Square(boolean scrabbleValues) { //regular mode constructor
         this(scrabbleValues, RL);
     }
     public Square(boolean scrabbleValues, int squareType) {
         this.scrabbleValues = scrabbleValues;
         this.squareType = squareType;    
-    }
+    } */
     
     public void put(String letter) {
         this.letter = letter;
@@ -47,7 +47,7 @@ public class Square {
         }
     }
     
-    public Square(String letter, int squareType, int letterValue) { //scrabble mode constructor
+    public void setTiles(String letter, int squareType, int letterValue, int gameMode) { //scrabble mode constructor
         this.letter = letter;
         this.squareType = squareType;
         this.letterValue = letterValue;

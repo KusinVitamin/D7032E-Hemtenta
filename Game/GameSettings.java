@@ -1,10 +1,12 @@
 package Game;
+import java.io.File;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+
 import Board.*;
 import Connection.*;
-
+import GameModes.*;
 public class GameSettings {
     String language="English";
     public int rows=3; 
@@ -15,6 +17,9 @@ public class GameSettings {
     public int gameMode = 0;
     Square[][] Board;
     Client c = new Client();
+    GameMode play = new GameMode();
+    File folder = new File("C:/Desktop/D7032E Hemtenta/GameModes");
+    
 
     public void menu(String []params){
 
@@ -41,17 +46,13 @@ public class GameSettings {
             Scanner in = new Scanner(System.in);
             playmode = in.nextLine();
             if(playmode.equals("1") || playmode.equals("2")) {
-                gameMode = 1;  
-                Square b = new Square(true);
-                b.createBoard(gameMode, rows, columns);           
+                gameMode = 1;
+                Square [][] b = new Square[rows][columns];  
+                play.Standard(numberOfPlayers,numberOfBots,b);           
             } else if(playmode.equals("3") ||playmode.equals("4")) {
                 gameMode = 2;
                 //5x5 predefined scrabbleboard
-                int scrabbleBoard[][] = {{Square.DW, Square.RL, Square.TW, Square.RL, Square.DW},
-                                         {Square.RL, Square.DL, Square.RL, Square.DL, Square.RL},
-                                         {Square.TL, Square.RL, Square.TW, Square.RL, Square.TL},
-                                         {Square.RL, Square.DL, Square.RL, Square.DL, Square.RL},
-                                         {Square.DW, Square.RL, Square.TW, Square.RL, Square.DW}};
+                play.
                 if(playmode.equals("4")) {
                     //5x5 random scrabbleboard (3 double letter, 2 tripple letter, 3 double word, 1 tripple word)
                     for(int[] row: scrabbleBoard) {Arrays.fill(row, Square.RL);} //reset scrabbleBoard
